@@ -58,7 +58,7 @@ class Level < GameState
     player.each_collision(Enemy) do |player, enemy|
       unless player.paused?
         player.pause!
-        Sound["die.wav"].play(0.1)
+        Sound["die.wav"].play(0.3)
         after(1000) { player.velocity_y = 0; player.x = @entry_x; player.y = @entry_y; player.unpause!; }
       end
     end
@@ -173,24 +173,25 @@ end
 class Level9 < Level
   def setup
     self.background = "level9.bmp"
+    Enemy.create(:image => "brown.bmp", :rotation_center => :top_left, :x => 0, :y => 290)
   end
 end
 
 class Poop < Level
   def setup
-    Sound["poop.wav"].play(0.1)
+    Sound["poop.wav"].play(0.3)
     self.background = "poop.bmp"
     @landed = false
     
     player.pause!
     player.input = {}
-    player.factor = 1
-    $window.factor = 1
+    player.factor = 2
+    $window.factor = 2
     player.x = 127 * 3
     player.y = 114 * 3
     
     every(500, :name => :falling) { 
-      Sound["falling.wav"].play(0.1) 
+      Sound["falling.wav"].play(0.3) 
       player.y += 7
     }
   end
@@ -199,7 +200,7 @@ class Poop < Level
     super
     if player.y > 153 * 3 && @landed == false
       stop_timer(:falling)
-      Sound["land.wav"].play(0.1)
+      Sound["land.wav"].play(0.3)
       @landed = true
     end
   end

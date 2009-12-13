@@ -28,7 +28,7 @@ class Player < Chingu::GameObject
     unless @jumping
       self.velocity_y = -7
       @jumping = true
-      Sound["jump.wav"].play(0.05)
+      Sound["jump.wav"].play(0.2)
     end
   end
     
@@ -49,20 +49,11 @@ class Player < Chingu::GameObject
   end
   
   def collision_left?
-    #(self.bounding_box.top.to_i .. self.bounding_box.bottom.to_i).each do |y|
-    #  return true if  $window.current_game_state.pixel_collision_at?(self.bounding_box.left, y)
-    #end
-    #return false
     collision = false
     image.line bb.left, bb.top, bb.left, bb.bottom, :color_control => proc { |c| if c[3] != 0; collision = true; end; :none }    
   end
 
-  def collision_right?
-    #(bb.top.to_i .. bb.bottom.to_i).each do |y|
-    #  return true if  $window.current_game_state.pixel_collision_at?(bb.right, y)
-    #end
-    #return false
-    
+  def collision_right?    
     collision = false
     image.line bb.right, bb.top, bb.right, bb.bottom, :color_control => proc { |c| if c[3] != 0; collision = true; end; :none }
   end

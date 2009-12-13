@@ -47,9 +47,9 @@ class Game < Chingu::Window
 
     @map = Map.new(:map => map, :row => 1, :col => 0)
     
-    #@map = Map.new(:map => map, :row => 4, :col => 1)
-    #@player.x = 700
-    #@player.y = 450
+    #@map = Map.new(:map => map, :row => 5, :col => 2)
+    #@player.x = 3
+    #@player.y = 200
     
     switch_game_state(@map.current)
   end
