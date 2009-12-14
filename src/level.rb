@@ -40,18 +40,18 @@ class Level < GameState
     super
     
     if player.x >= width    # RIGHT
-      player.x = 1
-      player.y -= 5
+      player.x = 3
+      player.y -= 2
       switch_game_state(map.right)
     elsif player.x < 0      # LEFT
-      player.y -= 5
-      player.x = width-1
+      player.y -= 2
+      player.x = width-3
       switch_game_state(map.left)
     elsif player.y > height # DOWN
       player.y = 1
       switch_game_state(map.down)
     elsif player.y < 0      # UP
-      player.y = height-1
+      player.y = height-2
       switch_game_state(map.up)
     end
     
@@ -71,6 +71,7 @@ class Level < GameState
   def pixel_collision_at?(x, y)
     x = (x / $window.factor).to_i
     y = (y / $window.factor).to_i
+    #puts "pixel_collision_at(#{x}, #{y})"
     return false    if outside_window?(x, y)
     not @background.image.transparent_pixel?(x, y)
   end
@@ -82,7 +83,7 @@ class Level < GameState
   end
 
   def outside_window?(x, y)    
-    x <= 0 || x >= @background.image.width || y <= 0 || y >= @background.image.height
+    x < 0 || x > @background.image.width-1 || y < 0 || y > @background.image.height-1
   end
   
 end

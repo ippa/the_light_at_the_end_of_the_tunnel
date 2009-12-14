@@ -1,22 +1,21 @@
 #
 # 
 #
-require 'rubygems'
+GAMEROOT = File.dirname(File.expand_path($0))
+$: << File.join(GAMEROOT,"lib")
+ENV['PATH'] = File.join(GAMEROOT,"lib") + ";" + ENV['PATH']
+
+require 'rubygems' unless RUBY_VERSION =~ /1\.9/
+require 'chingu'
 require 'opengl'
 require 'texplay'
-
-#begin
-#  require '../chingu/lib/chingu'
-#rescue LoadError
-  require 'chingu'
-#end
-
-ENV['PATH'] = File.join(ROOT,"lib") + ";" + ENV['PATH']
 
 include Gosu
 include Chingu
 
 require_all File.join(ROOT, 'src')
+
+exit if defined?(Ocra)
 
 class Game < Chingu::Window
   attr_reader :player, :map

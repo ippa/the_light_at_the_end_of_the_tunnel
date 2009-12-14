@@ -1,6 +1,6 @@
 class Player < Chingu::GameObject
   has_traits :timer, :velocity, :collision_detection
-  has_trait :bounding_box#, :debug => true, :scale => 0.70
+  has_trait :bounding_box, :scale => 0.80
   
   def initialize(options)
     super
