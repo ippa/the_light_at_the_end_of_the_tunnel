@@ -8,7 +8,7 @@ Homepage: http://ippa.se/gaming
 
 ~~~ play from source
 Ruby 1.9.1 - download from http://ruby-lang.org/
-Rubygems "opengl", "gosu", "texplay" and "chingu"  - gem install <gemname>
+Rubygems "ruby-opengl", "gosu", "texplay" and "chingu"  - gem install <gemname>
 
 
 ~~~ NOTE
