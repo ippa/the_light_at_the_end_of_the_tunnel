@@ -3,7 +3,7 @@ A Ludum Dare #16 entry by ippa
 
 ~~~ download
 Source: http://github.com/ippa/the_light_at_the_end_of_the_tunnel
-Win32: http://ippa.se/the_light.exe
+Win32: http://ippa.se/games/the_light.exe
 Homepage: http://ippa.se/gaming
 
 ~~~ play from source

@@ -6,8 +6,6 @@ class Enemy < Chingu::GameObject
   def initialize(options = {})
     super
     
-    self.image.retrofy
     self.zorder = 0
-    self.factor = $window.factor
   end
 end

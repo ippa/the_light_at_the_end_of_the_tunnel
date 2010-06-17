@@ -16,7 +16,7 @@ class Level < GameState
   end
   
   def background=(image)
-    @background = GameObject.create(:image => image, :rotation_center => :top_left, :zorder => 20, :factor => $window.factor)
+    @background = GameObject.create(:image => image, :rotation_center => :top_left, :zorder => 20)
   end
   
   def player
@@ -65,7 +65,7 @@ class Level < GameState
     
     game_objects.destroy_if { |game_object| game_object.outside_window? }
     
-    # $window.caption = "towards nirvana. #{self.class} - x/y #{$window.player.x}/#{$window.player.y} FPS: #{$window.fps} - Game objects: #{game_objects.size}"
+    $window.caption = "towards nirvana. #{self.class} - x/y #{$window.player.x}/#{$window.player.y} FPS: #{$window.fps} - Game objects: #{game_objects.size}"
   end
   
   def pixel_collision_at?(x, y)
@@ -80,6 +80,11 @@ class Level < GameState
     steps = 0
     steps += 1  while pixel_collision_at?(x, y - steps) && (y - steps) > 0
     return steps
+  end
+
+  def surface_y_from(x, y, max_steps = nil)
+    y -= 1  while (pixel_collision_at?(x, y) && y >= 0)
+    return y
   end
 
   def outside_window?(x, y)    
@@ -186,8 +191,8 @@ class Poop < Level
     
     player.pause!
     player.input = {}
-    player.factor = 2
-    $window.factor = 2
+    #player.factor = 2
+    #$window.factor = 2
     player.x = 127 * 3
     player.y = 114 * 3
     

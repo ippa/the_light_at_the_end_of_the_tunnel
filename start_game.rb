@@ -2,14 +2,13 @@
 # 
 #
 GAMEROOT = File.dirname(File.expand_path($0))
-$: << File.join(GAMEROOT,"lib")
 ENV['PATH'] = File.join(GAMEROOT,"lib") + ";" + ENV['PATH']
 
 require 'rubygems' unless RUBY_VERSION =~ /1\.9/
 require 'chingu'
-require 'opengl'
 require 'texplay'
 
+DEBUG = false
 include Gosu
 include Chingu
 
@@ -19,11 +18,12 @@ exit if defined?(Ocra)
 
 class Game < Chingu::Window
   attr_reader :player, :map
-  attr_accessor :factor
   
   def initialize
-    @factor = 3
     super(320 * 3, 180 * 3, false)
+    
+    self.factor = 3
+    Gosu::enable_undocumented_retrofication
     
     $window.caption = "the light at the end of the tunnel. ~~ http://ippa.se/gaming ~~ a LD#16 entry, theme 'Exploration'."
     
