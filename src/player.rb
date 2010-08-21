@@ -1,7 +1,7 @@
 class Player < Chingu::GameObject
-  has_traits :timer, :collision_detection
-  has_trait :bounding_box, :debug => DEBUG
-  has_trait :velocity, :apply => false
+  traits :timer, :collision_detection
+  trait :bounding_box, :debug => DEBUG
+  trait :velocity, :apply => false
   
   def initialize(options)
     super
@@ -11,7 +11,7 @@ class Player < Chingu::GameObject
                    :holding_up => :jump }
                    
     @animation = Hash.new
-    @animation[:full] = Animation.new(:file => "player.bmp", :size => [8,9], :delay => 40)
+    @animation[:full] = Animation.new(:file => File.join(ROOT, "media", "player.bmp"), :size => [8,9], :delay => 40)
     @animation[:running] = @animation[:full][0..3]    
     @image = @animation[:full].first
 

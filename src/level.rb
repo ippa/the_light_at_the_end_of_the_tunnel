@@ -1,5 +1,5 @@
 class Level < GameState 
-  has_trait :timer
+  trait :timer
   
   def initialize(options = {})
     super
