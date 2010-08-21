@@ -27,7 +27,7 @@ class Game < Chingu::Window
     
     $window.caption = "the light at the end of the tunnel. ~~ http://ippa.se/gaming ~~ a LD#16 entry, theme 'Exploration'."
     
-    self.input = { :esc => :close, :p => Chingu::GameStates::Pause, :f1 => :next_level }
+    self.input = { :esc => :close, :p => Chingu::GameStates::Pause }
     @player = Player.create(:x => 100, :y => 100, :zorder => 100, :visible => false)
     
     Sound["jump.wav"] # <-- lame caching untill chingu gets "cache_media()" or simular
